@@ -10,10 +10,10 @@ public class MainPage {
 
     private final SelenideElement searchField = $(".supernova-dashboard-search #a11y-search-input");
 
-    @Step(value = "Поиск вакансии")
-    public MainPage searchVacancy() {
-        open("https://hh.ru/");
-        searchField.setValue("Стас").pressEnter();
+    @Step(value = "Поиск вакансии по тексту {value}")
+    public MainPage searchVacancy(String value) {
+        open("");
+        searchField.setValue(value).pressEnter();
         return this;
     }
 }
