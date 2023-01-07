@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
 
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.url;
@@ -51,7 +51,7 @@ public class MainTests extends BaseTest {
     void successfulSearchVacancyNotTextValue() {
         mainPage.searchVacancy("");
 
-        $$(".serp-item__title").shouldBe(sizeGreaterThan(50));
+        $$(".serp-item__title").shouldBe(size(50));
         webdriver().shouldHave(url("https://hh.ru/search/vacancy?text=&from=suggest_post&salary=&area=1&ored_clusters=true&enable_snippets=true"));
     }
 }
