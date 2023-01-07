@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import helper.Attach;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 public class BaseTest {
@@ -16,7 +17,7 @@ public class BaseTest {
 //        capabilities.setCapability("enableVNC", true);
 //        capabilities.setCapability("enableVideo", true);
 
-        String baseUrl = "https://hh.ru/";
+        String baseUrl = "https://hh.ru";
         String browser = System.getProperty("browser", "chrome");
         String browserVersion = System.getProperty("browser_version", "100.0");
         String browserSize = System.getProperty("browser_size", "1920x1080");
@@ -32,8 +33,8 @@ public class BaseTest {
         }
     }
 
-    @AfterAll
-    static void close() {
+    @AfterEach
+    void close() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
