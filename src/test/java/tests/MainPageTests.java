@@ -10,5 +10,6 @@ public class MainPageTests {
     @Test
     void searchVacancy() {
         mainPage.searchVacancy();
+
     }
 }
