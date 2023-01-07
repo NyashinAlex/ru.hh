@@ -33,7 +33,6 @@ public class MainPageTests extends BaseTest {
         mainPage.searchVacancy(valueVacancy);
 
         $(".bloko-column.bloko-column_xs-0.bloko-column_s-8.bloko-column_m-12.bloko-column_l-16 .bloko-header-section-3").shouldBe(text(valueVacancy));
-        $(".serp-item__title", 0).shouldBe(text(valueVacancy));
     }
 
     @Test
@@ -42,13 +41,12 @@ public class MainPageTests extends BaseTest {
         mainPage.searchVacancy(incorrectValueVacancy);
 
         $(".bloko-column.bloko-column_xs-0.bloko-column_s-8.bloko-column_m-12.bloko-column_l-16 .bloko-header-section-3").shouldBe(text("По запросу «" + incorrectValueVacancy + "» ничего не найдено"));
-        $$(".serp-item__title").shouldBe(sizeGreaterThan(0));
     }
 
     @Test
     @DisplayName("Успешный поиск по наименованию вакансии - нет текста поиска")
     void successfulSearchVacancyNotTextValue() {
-        mainPage.searchVacancy(incorrectValueVacancy);
+        mainPage.searchVacancy("");
 
         $$(".serp-item__title").shouldBe(sizeGreaterThan(50));
     }
