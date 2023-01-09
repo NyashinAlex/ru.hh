@@ -1,6 +1,8 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import config.WebDriverConfig;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,10 +13,17 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class AuthTests extends BaseTest {
 
+    static WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+
     Faker faker = new Faker();
     AuthPage authPage = new AuthPage();
 
-    String phone = "89056420821", password = "Nn1031941", nameUser = "Александр Няшин", passwordBad, phoneBad;
+    String
+            phone = config.getPhone(),
+            password = config.getPassword(),
+            nameUser = config.getNameUser(),
+            passwordBad,
+            phoneBad;
 
     @BeforeEach
     void generationData() {

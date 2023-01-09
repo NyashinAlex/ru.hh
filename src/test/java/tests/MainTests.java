@@ -1,12 +1,9 @@
 package tests;
 
-import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
-
-import java.util.Locale;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
@@ -15,14 +12,12 @@ import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class MainTests extends BaseTest {
 
-//    Faker faker = new Faker(new Locale("RU"));
     MainPage mainPage = new MainPage();
 
     String valueVacancy, incorrectValueVacancy;
 
     @BeforeEach
     void generationData() {
-//        valueVacancy = faker.job().position();
         valueVacancy = "QA";
         incorrectValueVacancy = "такой вакансии нет и не будет никогда";
     }

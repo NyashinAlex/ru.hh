@@ -13,7 +13,6 @@ public class AuthPage {
             phoneField = $(".bloko-input-text-wrapper [name = username]"),
             passwordField = $(".bloko-input-text-wrapper [type= password]"),
             enterButton = $(".account-login-tile", 0).$(".bloko-button.bloko-button_kind-primary");
-//            profileIcon = $(".supernova-icon-link-switch", 6);//.supernova-dropdown .bloko-text.bloko-text_strong
 
     @Step("Перейти на форму с авторизацией с паролем")
     public AuthPage clickEnterWithPassword() {
