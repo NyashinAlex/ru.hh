@@ -23,9 +23,9 @@ public class AuthPage {
     }
 
     @Step("Ввести логин и пароль")
-    public AuthPage writeLoginAndPass() {
-        phoneField.setValue("89056420821");
-        passwordField.setValue("Nn1031941");
+    public AuthPage writeLoginAndPass(String login, String password) {
+        phoneField.setValue(login);
+        passwordField.setValue(password);
         return this;
     }
 

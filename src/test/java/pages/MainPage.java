@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
-    private final SelenideElement searchField = $(".supernova-dashboard-search #a11y-search-input");
+    private final SelenideElement searchField = $(".supernova-dashboard-search #a11y-search-input"), titleVacancy = $(".serp-item__title");
 
     @Step(value = "Поиск вакансии по тексту {value}")
     public MainPage searchVacancy(String value) {
@@ -16,9 +16,9 @@ public class MainPage {
         return this;
     }
 
-    @Step(value = "Открытие вакансии и проверка соответстиве ее с поиском")
-    public MainPage checkVacancy() {
-        switchTo();
+    @Step(value = "Открытие {num + 1} вакансии")
+    public MainPage openVacancy(int num) {
+        $(".serp-item__title", num).click();
         return this;
     }
 }

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
 
+import java.util.Locale;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -13,14 +15,15 @@ import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class MainTests extends BaseTest {
 
-    Faker faker = new Faker();
+//    Faker faker = new Faker(new Locale("RU"));
     MainPage mainPage = new MainPage();
 
     String valueVacancy, incorrectValueVacancy;
 
     @BeforeEach
     void generationData() {
-        valueVacancy = faker.job().position();
+//        valueVacancy = faker.job().position();
+        valueVacancy = "QA";
         incorrectValueVacancy = "такой вакансии нет и не будет никогда";
     }
 
@@ -31,6 +34,17 @@ public class MainTests extends BaseTest {
 
         $(".bloko-column.bloko-column_xs-0.bloko-column_s-8.bloko-column_m-12.bloko-column_l-16 .bloko-header-section-3")
                 .shouldBe(text(valueVacancy));
+    }
+
+    @Test
+    @DisplayName("Проверка тела текста перовой вакансии на соответствие")
+    void checkVacancy() {
+        mainPage
+                .searchVacancy(valueVacancy)
+                .openVacancy(0);
+        switchTo().window(1);
+
+        $(".vacancy-title").shouldBe(text(valueVacancy));
     }
 
     @Test
